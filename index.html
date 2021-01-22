@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../../../../&#20316;&#26989;&#12501;&#12449;&#12452;&#12523;/&#24029;&#26449;%20&#36948;&#30690;/12_16&#35506;&#38988;&#65288;&#12376;&#12419;&#12435;&#12369;&#12435;&#65289;/style.css">
+	<title>JavaScriptサンプル</title>
+</head>
+<body>
+<h1 id="top">TOP</h1>
+<p>JavaScriptのサンプルです！</p>
+<pre>
+&lt;div&gt;乱数は
+&lt;script&gt;
+document.write(Math.floor(3*Math.random()));
+&lt;/script&gt;
+です！&lt;/div&gt;
+</pre>
+
+<div>乱数は
+<script>
+document.write(Math.floor(3*Math.random()));
+</script>
+です！</div>
+
+<h2>説明</h2>
+<dl>
+<dt>&lt;script&gt;&lt;/script&gt;</dt>
+<dd>このタグの中ではJavaScriptの命令を使います、っていうHTMLタグ</dd>
+<dt>document.write()</dt>
+<dd>かっこの中身を画面（html）に出力しなさい、っていう命令</dd>
+<dt>Math.floor()</dt>
+<dd>かっこの中身の小数点以下を切り捨てなさい、っていう命令</dd>
+<dt>Math.random()</dt>
+<dd>0以上1未満の小数のうちコンピュータによって適当に選ばれた数（乱数）をください、っていう命令</dd>
+</dl>
+<p>つまり、0以上1未満の小数がランダムに出てきて、それに3をかけることで0以上3未満の小数にする。で、小数点以下を切り捨てることで0か1か2が得られる。それを画面（html）に出力する</p>
+
+<h2>乱数の応用</h2>
+<p>たとえば・・・</p>
+
+<pre>
+&lt;script&gt;
+document.write("&lt;img src=\""+Math.floor(3*Math.random())+".png\"&gt;");
+&lt;/script&gt;
+</pre>
+
+<script>
+document.write("<img src=\""+Math.floor(3*Math.random())+".png\">");
+</script>
+
+
+<h2>じゃんけん</h2>
+
+<p>情報リテラシの授業で作ったフローチャートをもとにじゃんけんプログラムを作ってみましょう。</p>
+
+<pre>
+&lt;script&gt;
+function janken(myhand) {
+	var hand = ["ぐー","ちょき","ぱー"]; // 手の配列
+	var aihand = Math.floor(3*Math.random()); // CPUが出す手を決める
+	var result = ""; // 変数の初期化
+	if( myhand == 0 ) { // 自分がぐーのとき
+		if( aihand == 0 ) { // 相手もぐーなら
+			result = "ひきわけ";
+		} else if( aihand == 1 ) { // 相手がぐーでなくてちょきなら
+			result = "かち";
+		} else { // それら以外、つまり相手がぱーなら
+			result = "まけ";
+		}
+	}
+	// ここにelse ifを追加してじゃんけんを完成させよう
+	// もちろんもっと簡単化してもOK
+
+	// 結果表示
+	alert("自分の手："+hand[myhand]+"\n相手の手："+hand[aihand]+"\n結果："+result);
+}
+&lt;/script&gt;
+
+&lt;form&gt;
+&lt;input type="button" value="ぐー" onclick="janken(0)"&gt;
+&lt;input type="button" value="ちょき" onclick="janken(1)"&gt;
+&lt;input type="button" value="ぱー" onclick="janken(2)"&gt;
+&lt;/form>
+
+</pre>
+
+
+
+<script>
+function janken(myhand) {
+	var hand = ["ぐー","ちょき","ぱー"]; // 手の配列
+	var aihand = Math.floor(3*Math.random()); // CPUが出す手を決める
+	var result = ""; // 変数の初期化
+	if( myhand == 0 ) { // 自分がぐーのとき
+		if( aihand == 0 ) { // 相手もぐーなら
+			result = "ひきわけ";
+		} else if( aihand == 1 ) { // 相手がぐーでなくてちょきなら
+			result = "かち";
+		} else { // それら以外、つまり相手がぱーなら
+			result = "まけ";
+		}
+	}	
+	else if( myhand == 1 ) { // 自分がちょきのとき
+		if( aihand == 1) { // 相手もちょきなら
+			result = "ひきわけ";
+		} else if( aihand == 2 ) { // 相手がちょきでなくてぱーなら
+			result = "かち";
+		} else { // それら以外、つまり相手がぐーなら
+			result = "まけ";
+		}
+	} 
+	else { // 自分がぱーのとき
+		if( aihand == 2) { // 相手もぱーなら
+			result = "ひきわけ";
+		} else if( aihand == 0 ) { // 相手がぱーでなくてぐーなら
+			result = "かち";
+		} else { // それら以外、つまり相手がちょきなら
+			result = "まけ";
+		}
+	} 
+	
+
+	// 結果表示
+	alert("自分の手："+hand[myhand]+"\n相手の手："+hand[aihand]+"\n結果："+result);
+}
+</script>
+
+<form>
+<input type="button" value="ぐー" onclick="janken(0)">
+<input type="button" value="ちょき" onclick="janken(1)">
+<input type="button" value="ぱー" onclick="janken(2)">
+</form>
+
+<p>ボタンじゃなくて画像にするとか、ポップアップで出すんじゃなくて相手の手も画像も変えるとか、いろいろ工夫できそうですね。</p>
+
+</body>
+</html>
